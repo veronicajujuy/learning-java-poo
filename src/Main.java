@@ -6,23 +6,16 @@ import java.sql.SQLOutput;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Automovil toyota = new Automovil("Toyota","Etios",Color.ROJO,1.5);
-        toyota.setCapacidadTanque(45);
-        System.out.println("Detalle automovil: "+ toyota.detalle());
-        System.out.println("toyota.acelerarFrenar(3000) = " + toyota.acelerarFrenar(3000));
+        Automovil toyota = new Automovil("Toyota","Etios",Color.ROJO,new Motor(1.5, TipoMotor.NAFTA));
+        Tanque tanqueToyota = new Tanque(45);
+        toyota.setCapacidadTanque(tanqueToyota);
 
-        System.out.println("toyota.calcularConsumo(300,0.6f) = " + toyota.calcularConsumo(300,0.6f));
-        System.out.println("toyota.calcularConsumo(300,60) = " + toyota.calcularConsumo(300,60));
 
-        System.out.println(toyota.toString());
         System.out.println("Automovil color patente: "+ Automovil.getColorPatente());
-        System.out.println("toyota.getColorPatente() = " + toyota.getColorPatente());
-        Automovil.setColorPatente("Verde");
-        toyota.setColorPatente("verde azulado");
-        System.out.println("toyota.getColorPatente() = " + toyota.getColorPatente());
-        System.out.println("Automovil.getColorPatente() = " + Automovil.getColorPatente());
 
         Automovil peugeot = new Automovil("Peugeot","206",Color.GRIS);
+        peugeot.setMotor(new Motor(1.6, TipoMotor.NAFTA));
+        peugeot.setCapacidadTanque(new Tanque());
         System.out.println(peugeot);
         System.out.println("Velocidad maxima: "+ Automovil.VELOCIDAD_MAX_CARRETERA);
         // agregar tipo
@@ -32,5 +25,30 @@ public class Main {
         System.out.println("peugeot.getTipo() = " + peugeot.getTipo().getNombre());
         System.out.println("toyota.getTipo() = " + toyota.getTipo().getDescripcion());
         System.out.println("toyota.getTipo() = " + toyota.getTipo().getNombre());
+        // agregar nuevos atributos
+
+        Persona camilo = new Persona("Camilo", "Pineda");
+        Persona papa = new Persona("Miguel","Valdez");
+        toyota.setConductor(camilo);
+        peugeot.setConductor(papa);
+
+        System.out.println("Detalle automovil: "+ toyota);
+        System.out.println("Detalle automovil: "+ peugeot);
+
+        // agregar ruedas
+
+        for (int i = 0; i < 5; i++) {
+            toyota.addRueda(new Rueda("Pirelli",16, 7.5));
+        }
+
+        Rueda[] ruedasPeugeot = {new Rueda("Fast",16,7.5),new Rueda("Fast",16,7.5),
+                new Rueda("Fast",16,7.5),new Rueda("Fast",16,7.5),new Rueda("Fast",16,7.5)};
+        peugeot.setRuedas(ruedasPeugeot);
+
+
+        for (Rueda r:toyota.getRuedas()) {
+            System.out.println("r.getFabricante() = " + r.getFabricante());
+        }
+
     }
     }

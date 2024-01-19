@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+class Automovil {
+}
+Automovil <-- Motor
+Automovil <-- Persona
+Automovil <-- Tanque
+Automovil o-- Rueda
+
+class Motor {
+- cilindrada: double
+- tipo: String
+}
+
+class Rueda {
+- fabricante: String
+- aro: int
+- ancho: double
+}
+
+class Persona {
+- nombre: String
+- apellido: String
+}
+class Tanque {
+- capacidad int
+}
+
+@enduml
