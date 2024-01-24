@@ -49,6 +49,11 @@ public class Main {
         for (Rueda r:toyota.getRuedas()) {
             System.out.println("r.getFabricante() = " + r.getFabricante());
         }
+        Persona camilo2 = new Persona("Camilo", "Pineda");
+
+        System.out.println("Persona: "+ camilo);
+        System.out.println("hashcode:" + camilo.hashCode());
+        System.out.println("equals:" + camilo.equals(camilo2));
 
     }
     }
